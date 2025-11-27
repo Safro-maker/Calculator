@@ -1,0 +1,25 @@
+#vvod {
+    padding:5px;
+    border:2px solid black;
+    width:306px;
+    height:15px;
+}
+.element {
+    width:80px;
+    height:80px;
+    font-size:25px;
+}
+#elements {
+    display:flex;
+    flex-wrap:wrap;
+    width:320px;
+    height:320px;
+}
+#reset {
+    padding:10px;
+    width:160px;
+}
+#backspace {
+    padding:10px;
+    width:160px;
+}
