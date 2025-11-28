@@ -53,10 +53,19 @@ three.addEventListener("click", () => {
 });
 const razd = document.getElementById("razd");
 razd.addEventListener("click", () => {
-    if(oper=="") {
+    if(num1!="") {
+    if(num1!="" && oper!="" && num2!="") {
+        let k = operate(Number(num1),Number(num2),oper)
+        vvod.textContent = String(k) + " / ";
+        num1=k;
+        oper="/";
+        num2="";
+    }
+    else if(oper=="") {
         oper="/";
         vvod.textContent = vvod.textContent + " / ";
     };
+};
 });
 const four = document.getElementById("four");
 four.addEventListener("click", () => {
@@ -90,10 +99,19 @@ six.addEventListener("click", () => {
 });
 const umn = document.getElementById("umn");
 umn.addEventListener("click", () => {
-    if(oper=="") {
+    if(num1!="") {
+    if(num1!="" && oper!="" && num2!="") {
+        let k = operate(Number(num1),Number(num2),oper)
+        vvod.textContent = String(k) + " * ";
+        num1=k;
+        oper="*";
+        num2="";
+    }
+    else if(oper=="") {
         oper="*";
         vvod.textContent = vvod.textContent + " * ";
     };
+};
 });
 const seven = document.getElementById("seven");
 seven.addEventListener("click", () => {
@@ -127,10 +145,19 @@ nine.addEventListener("click", () => {
 });
 const veach = document.getElementById("veach");
 veach.addEventListener("click", () => {
-    if(oper=="") {
+    if(num1!="") {
+    if(num1!="" && oper!="" && num2!="") {
+        let k = operate(Number(num1),Number(num2),oper)
+        vvod.textContent = String(k) + " - ";
+        num1=k;
+        oper="-";
+        num2="";
+    }
+    else if(oper=="") {
         oper="-";
         vvod.textContent = vvod.textContent + " - ";
     };
+};
 });
 const nol = document.getElementById("nol");
 nol.addEventListener("click", () => {
@@ -169,10 +196,19 @@ ravn.addEventListener("click", () => {
 });
 const sloj = document.getElementById("sloj");
 sloj.addEventListener("click", () => {
-    if(oper=="") {
+    if(num1!="") {
+    if(num1!="" && oper!="" && num2!="") {
+        let k = operate(Number(num1),Number(num2),oper)
+        vvod.textContent = String(k) + " + ";
+        num1=k;
+        oper="+";
+        num2="";
+    }
+    else if(oper=="") {
         oper="+";
         vvod.textContent = vvod.textContent + " + ";
     };
+};
 });
 const reset = document.getElementById("reset");
 reset.addEventListener("click", () => {
@@ -183,7 +219,51 @@ reset.addEventListener("click", () => {
 });
 const bs = document.getElementById("backspace");
 bs.addEventListener("click", () => {
-    n=vvod.textContent;
-    vvod.textContent=n.slice(0, -1);
-})
+    let n=vvod.textContent;
+    if(num1!="" && oper=="" && num2=="") {
+        vvod.textContent=n.slice(0, -1);
+        let n1 = num1
+        num1=n1.slice(0, -1);
+    }
+    else if(num1!="" && oper!="" && num2!="") {
+        vvod.textContent=n.slice(0, -1);
+        let n2 = num2;
+        num2=n2.slice(0, -1);
+    }
+    else if(num1!="" && oper!="") {
+        vvod.textContent=n.slice(0, -3);
+        oper="";
+    };
+});
+const keyMap = {
+    "0": "nol",
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
+    "/": "razd",
+    "*": "umn",
+    "-": "veach",
+    "+": "sloj",
+    ".": "toch",
+    "Enter": "ravn",
+    "=": "ravn",
+    "Backspace": "backspace",
+};
+document.addEventListener("keydown", (e) => {
+    const id = keyMap[e.key];
+    if(!id) return;
+
+    const btn = document.getElementById(id);
+    if(btn) {
+        e.preventDefault();
+        btn.click();
+    }
+});
+
 
